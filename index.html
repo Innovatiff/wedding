@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alam &amp; Astrid — June 25</title>
+  <meta name="description" content="Alam and Astrid are getting married on June 25. Join us to celebrate." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__mark">
+      <img src="assets/logo.png" alt="" />
+    </div>
+    <div class="loader__line"><span></span></div>
+  </div>
+
+  <!-- Cursor glow -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#top" class="nav__brand" aria-label="Alam and Astrid home">
+        <img src="assets/logo.png" alt="A & A monogram" />
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#story">Our Story</a>
+        <a href="#details">The Day</a>
+        <a href="#venue">Venue</a>
+        <a href="#stay">Stay</a>
+        <a href="#faq">FAQ</a>
+        <a href="#rsvp" class="btn btn--small">RSVP</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <canvas class="hero__particles" id="particles" aria-hidden="true"></canvas>
+      <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+      <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow reveal-hero" style="--d:.2s">Together with their families</p>
+        <div class="hero__logo reveal-hero" style="--d:.45s">
+          <img src="assets/logo.png" alt="A & A monogram — Alam and Astrid" />
+        </div>
+        <h1 class="hero__title reveal-hero" style="--d:.8s">
+          <span class="hero__name hero__name--silver">Alam</span>
+          <span class="hero__amp">&amp;</span>
+          <span class="hero__name hero__name--blue">Astrid</span>
+        </h1>
+        <p class="hero__subtitle reveal-hero" style="--d:1.05s">request the pleasure of your company as they exchange vows</p>
+        <div class="hero__date reveal-hero" style="--d:1.25s">
+          <span class="hero__date-line"></span>
+          <span class="hero__date-text">June 25</span>
+          <span class="hero__date-line"></span>
+        </div>
+        <div class="hero__actions reveal-hero" style="--d:1.45s">
+          <a href="#rsvp" class="btn btn--primary">RSVP</a>
+          <a href="#story" class="btn btn--ghost">Our Story</a>
+        </div>
+      </div>
+
+      <a href="#countdown" class="hero__scroll" aria-label="Scroll down">
+        <span class="hero__scroll-dot"></span>
+      </a>
+    </section>
+
+    <!-- ============ TICKER ============ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Alam &amp; Astrid</span><i>✦</i>
+        <span>June 25</span><i>✦</i>
+        <span>Save the Date</span><i>✦</i>
+        <span>Forever begins</span><i>✦</i>
+        <span>Alam &amp; Astrid</span><i>✦</i>
+        <span>June 25</span><i>✦</i>
+        <span>Save the Date</span><i>✦</i>
+        <span>Forever begins</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ============ COUNTDOWN ============ -->
+    <section class="countdown section" id="countdown">
+      <div class="container">
+        <p class="eyebrow reveal">Counting the moments</p>
+        <h2 class="section-title reveal">Until we say <em>I do</em></h2>
+        <div class="countdown__grid reveal" id="countdownGrid">
+          <div class="countdown__unit">
+            <div class="countdown__flip"><span class="countdown__num" id="cdDays">00</span></div>
+            <span class="countdown__label">Days</span>
+          </div>
+          <div class="countdown__sep">:</div>
+          <div class="countdown__unit">
+            <div class="countdown__flip"><span class="countdown__num" id="cdHours">00</span></div>
+            <span class="countdown__label">Hours</span>
+          </div>
+          <div class="countdown__sep">:</div>
+          <div class="countdown__unit">
+            <div class="countdown__flip"><span class="countdown__num" id="cdMinutes">00</span></div>
+            <span class="countdown__label">Minutes</span>
+          </div>
+          <div class="countdown__sep">:</div>
+          <div class="countdown__unit">
+            <div class="countdown__flip"><span class="countdown__num" id="cdSeconds">00</span></div>
+            <span class="countdown__label">Seconds</span>
+          </div>
+        </div>
+        <p class="countdown__note reveal" id="countdownNote">Thursday, June 25 · 4:00 in the afternoon</p>
+        <div class="countdown__ring reveal" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <circle class="ring__bg" cx="60" cy="60" r="54" />
+            <circle class="ring__fg" id="ringProgress" cx="60" cy="60" r="54" />
+          </svg>
+          <span class="countdown__ring-label" id="ringLabel">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INTRO ============ -->
+    <section class="intro section" id="intro">
+      <div class="container intro__grid">
+        <div class="intro__text">
+          <p class="eyebrow reveal">Welcome</p>
+          <h2 class="section-title reveal">We're getting <em>married</em></h2>
+          <p class="lead reveal">Join us for a celebration that will feel like a dream in silver and blue. Explore our story, the schedule, where to stay, and everything you need for a day we will carry with us forever.</p>
+          <a href="#rsvp" class="btn btn--primary reveal">Count me in</a>
+        </div>
+        <div class="intro__gallery reveal">
+          <figure class="photo photo--tall" data-tilt>
+            <div class="photo__frame">
+              <span class="photo__label">Alam &amp; Astrid</span>
+            </div>
+          </figure>
+          <figure class="photo photo--short" data-tilt>
+            <div class="photo__frame photo__frame--blue">
+              <span class="photo__label">The proposal</span>
+            </div>
+          </figure>
+          <figure class="photo photo--short photo--offset" data-tilt>
+            <div class="photo__frame photo__frame--silver">
+              <span class="photo__label">Summer, together</span>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OUR STORY ============ -->
+    <section class="story section section--dark" id="story">
+      <div class="container">
+        <p class="eyebrow reveal">Two paths, one road</p>
+        <h2 class="section-title reveal">Our <em>Story</em></h2>
+
+        <div class="timeline">
+          <div class="timeline__line" aria-hidden="true"><span id="timelineFill"></span></div>
+
+          <article class="timeline__item reveal">
+            <div class="timeline__year">The first hello</div>
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div class="timeline__card">
+              <h3>How we met</h3>
+              <p>A chance introduction turned into a conversation that neither of us wanted to end. By the time the evening was over, we both knew something had shifted.</p>
+            </div>
+          </article>
+
+          <article class="timeline__item timeline__item--alt reveal">
+            <div class="timeline__year">The question</div>
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div class="timeline__card">
+              <h3>The proposal</h3>
+              <p>Under a sky that felt like it had been painted for the occasion, Alam asked. Astrid said yes before the question was finished.</p>
+            </div>
+          </article>
+
+          <article class="timeline__item reveal">
+            <div class="timeline__year">June 25</div>
+            <div class="timeline__dot timeline__dot--active" aria-hidden="true"></div>
+            <div class="timeline__card timeline__card--highlight">
+              <h3>The celebration</h3>
+              <p>Surrounded by the people we love most, we will promise each other forever. We cannot wait to share it with you.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VENUE ============ -->
+    <section class="venue section" id="venue">
+      <div class="container venue__grid">
+        <div class="venue__visual reveal">
+          <div class="venue__card" data-tilt>
+            <div class="venue__shine"></div>
+            <img src="assets/logo.png" alt="" class="venue__mark" />
+            <div class="venue__card-text">
+              <span>Ceremony &amp; Reception</span>
+              <strong>June 25</strong>
+            </div>
+          </div>
+        </div>
+        <div class="venue__text">
+          <p class="eyebrow reveal">The place</p>
+          <h2 class="section-title reveal">We'll see you at <em>the venue</em></h2>
+          <p class="lead reveal">An elegant setting for an elegant day. The ceremony and reception take place at the same location, so you can settle in and enjoy every moment.</p>
+          <dl class="venue__facts reveal">
+            <div><dt>Doors open</dt><dd>3:30 pm</dd></div>
+            <div><dt>Ceremony</dt><dd>4:00 pm</dd></div>
+            <div><dt>Dress code</dt><dd>Formal · Silver &amp; Blue</dd></div>
+            <div><dt>Parking</dt><dd>On site, complimentary</dd></div>
+          </dl>
+          <a href="#" class="btn btn--ghost reveal">Get directions</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCHEDULE ============ -->
+    <section class="schedule section section--soft" id="details">
+      <div class="container">
+        <p class="eyebrow reveal">The plan</p>
+        <h2 class="section-title reveal">Our <em>wedding day</em></h2>
+
+        <div class="schedule__list">
+          <article class="schedule__item reveal">
+            <div class="schedule__time"><span>4:00</span><small>pm</small></div>
+            <div class="schedule__body">
+              <h3>Wedding Ceremony</h3>
+              <p>We invite you to witness the moment we become husband and wife. Please arrive a little early to find your seat.</p>
+            </div>
+            <div class="schedule__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M9 9l1.5-3h3L15 9"/></svg>
+            </div>
+          </article>
+
+          <article class="schedule__item reveal">
+            <div class="schedule__time"><span>5:00</span><small>pm</small></div>
+            <div class="schedule__body">
+              <h3>Drinks &amp; Canapés</h3>
+              <p>Champagne, cocktails and something small to eat while we take a few photographs and the sun begins to soften.</p>
+            </div>
+            <div class="schedule__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v6M9 20h6"/></svg>
+            </div>
+          </article>
+
+          <article class="schedule__item reveal">
+            <div class="schedule__time"><span>7:00</span><small>pm</small></div>
+            <div class="schedule__body">
+              <h3>Dinner Reception</h3>
+              <p>A seated dinner with toasts, laughter and a few surprises. Places will be set, so keep an eye out for your name.</p>
+            </div>
+            <div class="schedule__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="5"/><path d="M3 4v8M3 8h2M21 4v8"/></svg>
+            </div>
+          </article>
+
+          <article class="schedule__item reveal">
+            <div class="schedule__time"><span>9:30</span><small>pm</small></div>
+            <div class="schedule__body">
+              <h3>Party &amp; Dancing</h3>
+              <p>Shoes off, hands up. We will dance until the band gives in and then a little while longer.</p>
+            </div>
+            <div class="schedule__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2.5"/><circle cx="17" cy="16" r="2.5"/></svg>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STAY ============ -->
+    <section class="stay section" id="stay">
+      <div class="container">
+        <p class="eyebrow reveal">Rest well</p>
+        <h2 class="section-title reveal">Where to sleep <em>after the party</em></h2>
+        <div class="stay__grid">
+          <article class="stay__card reveal" data-tilt>
+            <div class="stay__num">01</div>
+            <h3>Guest Accommodation</h3>
+            <p>A block of rooms has been reserved for our guests at a hotel close to the venue. Quote our names when booking for the wedding rate.</p>
+            <a href="#" class="link">Book a room</a>
+          </article>
+          <article class="stay__card reveal" data-tilt style="--d:.1s">
+            <div class="stay__num">02</div>
+            <h3>Boutique Hotel</h3>
+            <p>A little more intimate, a short walk from the celebration. Perfect if you would like to make a weekend of it.</p>
+            <a href="#" class="link">See availability</a>
+          </article>
+          <article class="stay__card reveal" data-tilt style="--d:.2s">
+            <div class="stay__num">03</div>
+            <h3>Shuttle Service</h3>
+            <p>A shuttle will run between the recommended hotels and the venue before the ceremony and after the party.</p>
+            <a href="#" class="link">View timetable</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RSVP ============ -->
+    <section class="rsvp section section--dark" id="rsvp">
+      <div class="container rsvp__grid">
+        <div class="rsvp__text">
+          <p class="eyebrow reveal">Kindly reply</p>
+          <h2 class="section-title reveal">Can we <em>count</em><br />on you?</h2>
+          <p class="lead reveal">Please let us know by May 25 so we can save you a seat, a glass, and a place on the dance floor.</p>
+          <div class="rsvp__mark reveal" aria-hidden="true">
+            <img src="assets/logo.png" alt="" />
+          </div>
+        </div>
+        <form class="rsvp__form reveal" id="rsvpForm" novalidate>
+          <div class="field">
+            <input type="text" id="fullName" name="fullName" required placeholder=" " autocomplete="name" />
+            <label for="fullName">Full name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="email" name="email" required placeholder=" " autocomplete="email" />
+            <label for="email">Email address</label>
+          </div>
+          <div class="field field--radio">
+            <span class="field__legend">Will you attend?</span>
+            <div class="radio-group">
+              <label class="radio"><input type="radio" name="attending" value="yes" checked /><span>Joyfully accept</span></label>
+              <label class="radio"><input type="radio" name="attending" value="no" /><span>Regretfully decline</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <input type="number" id="guests" name="guests" min="1" max="6" value="1" placeholder=" " />
+            <label for="guests">Number of guests</label>
+          </div>
+          <div class="field">
+            <textarea id="notes" name="notes" rows="3" placeholder=" "></textarea>
+            <label for="notes">Dietary requirements or a note for us</label>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">
+            <span class="btn__text">Send my reply</span>
+            <span class="btn__loading" aria-hidden="true"></span>
+          </button>
+          <div class="rsvp__success" id="rsvpSuccess" role="status" aria-live="polite">
+            <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg>
+            <p>Thank you! We can't wait to celebrate with you.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq section" id="faq">
+      <div class="container container--narrow">
+        <p class="eyebrow reveal">Good to know</p>
+        <h2 class="section-title reveal">A few things <em>to know</em></h2>
+
+        <div class="accordion reveal">
+          <details class="accordion__item">
+            <summary>Is bringing a plus one allowed at this event?<span class="accordion__icon"></span></summary>
+            <div class="accordion__body"><p>Your invitation will note whether a guest is included. If you are unsure, just ask us. We would love to help.</p></div>
+          </details>
+          <details class="accordion__item">
+            <summary>What would everyone plan to arrive?<span class="accordion__icon"></span></summary>
+            <div class="accordion__body"><p>Doors open at 3:30 pm and the ceremony begins promptly at 4:00 pm. Please arrive with a little time to spare.</p></div>
+          </details>
+          <details class="accordion__item">
+            <summary>Is there space for children?<span class="accordion__icon"></span></summary>
+            <div class="accordion__body"><p>We adore your little ones, but this will be an adults-only celebration. We hope you enjoy a night off.</p></div>
+          </details>
+          <details class="accordion__item">
+            <summary>Is there parking at the venue?<span class="accordion__icon"></span></summary>
+            <div class="accordion__body"><p>Yes, there is complimentary parking on site, and a shuttle from the recommended hotels.</p></div>
+          </details>
+          <details class="accordion__item">
+            <summary>Will there be vegetarian dishes served?<span class="accordion__icon"></span></summary>
+            <div class="accordion__body"><p>Absolutely. Let us know any dietary requirements in your RSVP and we will take care of the rest.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DRESS CODE ============ -->
+    <section class="dress section section--soft" id="dress">
+      <div class="container">
+        <p class="eyebrow reveal">Dress code</p>
+        <h2 class="section-title reveal">What to <em>wear</em></h2>
+        <p class="lead lead--center reveal">Formal attire, please. We would be delighted if you drew from our palette.</p>
+        <div class="swatches reveal">
+          <div class="swatch"><span class="swatch__color" style="--c:#ffffff"></span><span>White</span></div>
+          <div class="swatch"><span class="swatch__color" style="--c:linear-gradient(135deg,#f4f6f9,#b8bfca 45%,#e9ecf1 60%,#9aa3b0)"></span><span>Silver</span></div>
+          <div class="swatch"><span class="swatch__color" style="--c:linear-gradient(135deg,#3b6cff,#1c3fd6 55%,#0b1f7a)"></span><span>Royal Blue</span></div>
+        </div>
+        <div class="dress__grid">
+          <article class="dress__card reveal" data-tilt>
+            <div class="dress__frame dress__frame--silver"></div>
+            <h3>For him</h3>
+            <p>A dark suit or tuxedo. Silver or blue ties and pocket squares are very welcome.</p>
+          </article>
+          <article class="dress__card reveal" data-tilt style="--d:.1s">
+            <div class="dress__frame dress__frame--blue"></div>
+            <h3>For her</h3>
+            <p>Floor-length or elegant cocktail dresses. Please leave the white gowns to the bride.</p>
+          </article>
+          <article class="dress__card reveal" data-tilt style="--d:.2s">
+            <div class="dress__frame dress__frame--mixed"></div>
+            <h3>The details</h3>
+            <p>The ceremony is outdoors on grass. A block heel will serve you better than a stiletto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSING ============ -->
+    <section class="closing section section--dark" id="closing">
+      <div class="closing__orb" aria-hidden="true"></div>
+      <div class="container closing__inner">
+        <div class="closing__logo reveal">
+          <img src="assets/logo.png" alt="A & A monogram" />
+        </div>
+        <h2 class="closing__title reveal">
+          <span class="hero__name--silver">Alam</span>
+          <span class="hero__amp">&amp;</span>
+          <span class="hero__name--blue">Astrid</span>
+        </h2>
+        <p class="closing__date reveal">June 25 <i>✦</i> Save the date</p>
+        <a href="#rsvp" class="btn btn--primary reveal">RSVP now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>Made with love for Alam &amp; Astrid</p>
+      <a href="#top" class="footer__top" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
