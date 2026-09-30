@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
 
@@ -182,16 +182,19 @@
         <div class="intro__gallery reveal">
           <figure class="photo photo--tall" data-tilt>
             <div class="photo__frame">
+              <img class="photo__mark" src="assets/logo.png" alt="" />
               <span class="photo__label">Alam &amp; Astrid</span>
             </div>
           </figure>
           <figure class="photo photo--short" data-tilt>
             <div class="photo__frame photo__frame--blue">
+              <img class="photo__mark" src="assets/logo.png" alt="" />
               <span class="photo__label">The proposal</span>
             </div>
           </figure>
           <figure class="photo photo--short photo--offset" data-tilt>
             <div class="photo__frame photo__frame--silver">
+              <img class="photo__mark" src="assets/logo.png" alt="" />
               <span class="photo__label">Summer, together</span>
             </div>
           </figure>
@@ -327,19 +330,19 @@
         <h2 class="section-title reveal">Where to sleep <em>after the party</em></h2>
         <div class="stay__grid">
           <article class="stay__card reveal" data-tilt>
-            <div class="stay__num">01</div>
+            <div class="stay__top"><span class="stay__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 15h18M6 10V7h5v3M13 10V7h5v3M3 18v1M21 18v1"/></svg></span><span class="stay__num">01</span></div>
             <h3>Guest Accommodation</h3>
             <p>A block of rooms has been reserved for our guests at a hotel close to the venue. Quote our names when booking for the wedding rate.</p>
             <a href="#" class="link">Book a room</a>
           </article>
           <article class="stay__card reveal" data-tilt style="--d:.1s">
-            <div class="stay__num">02</div>
+            <div class="stay__top"><span class="stay__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M14 9l2 2"/></svg></span><span class="stay__num">02</span></div>
             <h3>Boutique Hotel</h3>
             <p>A little more intimate, a short walk from the celebration. Perfect if you would like to make a weekend of it.</p>
             <a href="#" class="link">See availability</a>
           </article>
           <article class="stay__card reveal" data-tilt style="--d:.2s">
-            <div class="stay__num">03</div>
+            <div class="stay__top"><span class="stay__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 10h16M8 21v-4M16 21v-4"/><circle cx="8" cy="13.5" r=".8"/><circle cx="16" cy="13.5" r=".8"/></svg></span><span class="stay__num">03</span></div>
             <h3>Shuttle Service</h3>
             <p>A shuttle will run between the recommended hotels and the venue before the ceremony and after the party.</p>
             <a href="#" class="link">View timetable</a>
@@ -441,18 +444,27 @@
         </div>
         <div class="dress__grid">
           <article class="dress__card reveal" data-tilt>
-            <div class="dress__frame dress__frame--silver"></div>
-            <h3>For him</h3>
+            <div class="dress__icon dress__icon--silver" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7l-7 7v26h32V14l-7-7"/><path d="M15 7c2 7 5 11 9 14 4-3 7-7 9-14"/><path d="M18 24l6 2 6-2v6l-6-2-6 2z"/><path d="M23 25h2v4h-2z"/><path d="M24 30v10"/></svg>
+            </div>
+            <span class="dress__tag">For him</span>
+            <h3>Suit or tuxedo</h3>
             <p>A dark suit or tuxedo. Silver or blue ties and pocket squares are very welcome.</p>
           </article>
           <article class="dress__card reveal" data-tilt style="--d:.1s">
-            <div class="dress__frame dress__frame--blue"></div>
-            <h3>For her</h3>
+            <div class="dress__icon dress__icon--blue" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6c0 5 2 8 6 8s6-3 6-8"/><path d="M18 6l-2 10h16l-2-10"/><path d="M16 16L9 40h30l-7-24"/><path d="M13 32c7 2 15 2 22 0"/></svg>
+            </div>
+            <span class="dress__tag">For her</span>
+            <h3>Evening dress</h3>
             <p>Floor-length or elegant cocktail dresses. Please leave the white gowns to the bride.</p>
           </article>
           <article class="dress__card reveal" data-tilt style="--d:.2s">
-            <div class="dress__frame dress__frame--mixed"></div>
-            <h3>The details</h3>
+            <div class="dress__icon dress__icon--mixed" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34l14-2 4-8 12-6 6 16H6z"/><path d="M20 32v6M6 34v4h36v-4"/><path d="M30 16c-2 4-2 8 0 12"/></svg>
+            </div>
+            <span class="dress__tag">The details</span>
+            <h3>Mind the grass</h3>
             <p>The ceremony is outdoors on grass. A block heel will serve you better than a stiletto.</p>
           </article>
         </div>
@@ -471,7 +483,7 @@
           <span class="hero__amp">&amp;</span>
           <span class="hero__name--blue">Astrid</span>
         </h2>
-        <p class="closing__date reveal">June 25 <i>✦</i> Save the date</p>
+        <p class="closing__date reveal"><span>June 25</span><i>✦</i><span>Save the date</span></p>
         <a href="#rsvp" class="btn btn--primary reveal">RSVP now</a>
       </div>
     </section>
@@ -484,6 +496,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
