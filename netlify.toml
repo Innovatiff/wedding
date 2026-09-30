@@ -11,15 +11,9 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
+# CSS, JS and HTML are left on Netlify's default (max-age=0, must-revalidate)
+# so every deploy is picked up immediately; the ?v= tags in index.html bust
+# any copy a browser already holds.
 
 [[headers]]
   for = "/*"
