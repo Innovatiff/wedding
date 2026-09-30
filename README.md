@@ -22,4 +22,10 @@ python3 -m http.server 8000
 - **Wedding time**: the countdown targets the next June 25 at 4:00 pm local time. Change the hour in `nextWeddingDate()` in `script.js`.
 - **Venue, hotels, story**: edit the text directly in `index.html`.
 - **Photos**: the gradient placeholder frames (`.photo__frame`, `.dress__frame`) can be replaced with `<img>` tags.
-- **RSVP**: the form currently shows a success state locally. Replace the `setTimeout` in the submit handler in `script.js` with a request to your form service.
+- **RSVP**: the form posts to Netlify Forms. Locally it shows the success state without sending.
+
+## Deploying on Netlify
+
+1. In Netlify, choose **Add new site → Import an existing project** and pick this repository.
+2. Leave the build command empty and set the publish directory to `.` (both are already in `netlify.toml`).
+3. Deploy. The RSVP form is a Netlify Form named `rsvp`; submissions appear under **Site → Forms** in the Netlify dashboard, where you can also turn on email notifications.

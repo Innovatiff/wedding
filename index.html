@@ -320,7 +320,9 @@
             <img src="assets/logo.png" alt="" />
           </div>
         </div>
-        <form class="rsvp__form reveal" id="rsvpForm" novalidate>
+        <form class="rsvp__form reveal" id="rsvpForm" name="rsvp" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="rsvp" />
+          <p class="hidden" aria-hidden="true"><label>Leave this empty: <input name="bot-field" /></label></p>
           <div class="field">
             <input type="text" id="fullName" name="fullName" required placeholder=" " autocomplete="name" />
             <label for="fullName">Full name</label>

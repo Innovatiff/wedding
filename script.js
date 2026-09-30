@@ -269,14 +269,27 @@
       const btn = form.querySelector("button[type=submit]");
       btn.classList.add("is-loading");
       btn.disabled = true;
-      // Replace this timeout with a real request (e.g. fetch to a form service) when ready.
-      setTimeout(() => {
-        btn.classList.remove("is-loading");
-        success.classList.add("is-visible");
-      }, 1100);
+      // Submit to Netlify Forms (the form is registered via data-netlify in index.html).
+      const data = new URLSearchParams(new FormData(form));
+      fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: data.toString() })
+        .then((res) => { if (!res.ok) throw new Error("Form submission failed: " + res.status); })
+        .catch((err) => {
+          // Local preview (file:// or a plain static server) has no Netlify backend; still show success.
+          if (location.protocol === "http:" || location.protocol === "file:") return;
+          throw err;
+        })
+        .then(() => {
+          btn.classList.remove("is-loading");
+          success.classList.add("is-visible");
+        })
+        .catch(() => {
+          btn.classList.remove("is-loading");
+          btn.disabled = false;
+          alert("Sorry, something went wrong sending your reply. Please try again.");
+        });
     });
     form.querySelectorAll("input").forEach((input) =>
-      input.addEventListener("input", () => input.closest(".field").classList.remove("is-invalid"))
+      input.addEventListener("input", () => input.closest(".field")?.classList.remove("is-invalid"))
     );
   }
 
