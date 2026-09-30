@@ -26,21 +26,36 @@
 
   <!-- Navigation -->
   <header class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#top" class="nav__brand" aria-label="Alam and Astrid home">
-        <img src="assets/logo.png" alt="A & A monogram" />
+    <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+    <div class="nav__bar">
+      <a href="#top" class="nav__brand" aria-label="Alam and Astrid — back to top">
+        <img src="assets/logo.png" alt="" class="nav__mark" />
+        <span class="nav__wordmark">Alam <i>&amp;</i> Astrid</span>
       </a>
-      <nav class="nav__links" id="navLinks">
-        <a href="#story">Our Story</a>
-        <a href="#details">The Day</a>
-        <a href="#venue">Venue</a>
-        <a href="#stay">Stay</a>
-        <a href="#faq">FAQ</a>
-        <a href="#rsvp" class="btn btn--small">RSVP</a>
+
+      <nav class="nav__menu" id="navLinks" aria-label="Site">
+        <div class="nav__menu-inner">
+          <a href="#story" class="nav__link"><span>Our Story</span></a>
+          <a href="#details" class="nav__link"><span>The Day</span></a>
+          <a href="#venue" class="nav__link"><span>Venue</span></a>
+          <a href="#stay" class="nav__link"><span>Stay</span></a>
+          <a href="#faq" class="nav__link"><span>FAQ</span></a>
+          <span class="nav__indicator" id="navIndicator" aria-hidden="true"></span>
+        </div>
+        <a href="#rsvp" class="btn btn--primary nav__menu-cta">RSVP</a>
+        <div class="nav__menu-foot" aria-hidden="true">
+          <img src="assets/logo.png" alt="" />
+          <span>June 25 <i>✦</i> Save the date</span>
+        </div>
       </nav>
-      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div class="nav__right">
+        <span class="nav__date" aria-hidden="true">June 25</span>
+        <a href="#rsvp" class="nav__cta"><span>RSVP</span></a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 

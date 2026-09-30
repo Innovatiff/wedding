@@ -39,26 +39,60 @@
   const nav = document.getElementById("nav");
   const navToggle = document.getElementById("navToggle");
   const navLinks = document.getElementById("navLinks");
+  const navProgress = document.getElementById("navProgress");
+  const navIndicator = document.getElementById("navIndicator");
+  const navLinkEls = [...navLinks.querySelectorAll(".nav__link")];
+  let lastY = window.scrollY;
 
   function onScrollNav() {
-    nav.classList.toggle("is-scrolled", window.scrollY > 40);
+    const y = window.scrollY;
+    nav.classList.toggle("is-scrolled", y > 40);
+    // Hide when scrolling down past the hero, reveal on any upward scroll.
+    const goingDown = y > lastY + 4;
+    const goingUp = y < lastY - 4;
+    if (goingDown && y > window.innerHeight * 0.6) nav.classList.add("is-hidden");
+    else if (goingUp || y < 80) nav.classList.remove("is-hidden");
+    lastY = y;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    navProgress.style.setProperty("--progress", max > 0 ? (y / max).toFixed(4) : 0);
   }
   onScrollNav();
   window.addEventListener("scroll", onScrollNav, { passive: true });
 
-  navToggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
+  function setMenu(open) {
+    nav.classList.toggle("is-open", open);
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     body.style.overflow = open ? "hidden" : "";
+  }
+  navToggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
+  navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  window.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+  window.matchMedia("(min-width: 901px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
+
+  // Sliding indicator under the active link (desktop).
+  function moveIndicator(link) {
+    if (!navIndicator) return;
+    if (!link) { navIndicator.classList.remove("is-on"); return; }
+    navIndicator.style.width = link.offsetWidth + "px";
+    navIndicator.style.transform = `translateX(${link.offsetLeft}px)`;
+    navIndicator.classList.add("is-on");
+  }
+  function setActiveLink(id) {
+    let active = null;
+    navLinkEls.forEach((a) => {
+      const on = a.getAttribute("href") === "#" + id;
+      a.classList.toggle("is-active", on);
+      if (on) active = a;
+    });
+    moveIndicator(active);
+  }
+  const activeLink = () => navLinkEls.find((l) => l.classList.contains("is-active"));
+  navLinkEls.forEach((a) => {
+    a.addEventListener("mouseenter", () => moveIndicator(a));
+    a.addEventListener("mouseleave", () => moveIndicator(activeLink()));
   });
-  navLinks.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-      body.style.overflow = "";
-    })
-  );
+  window.addEventListener("resize", () => moveIndicator(activeLink()));
 
   /* ---------- Cursor glow ---------- */
   const glow = document.getElementById("cursorGlow");
@@ -304,18 +338,17 @@
   });
 
   /* ---------- Active nav link ---------- */
+  // Map each section to the nav link that represents it; null clears the indicator.
+  const sectionToLink = { intro: "story", story: "story", venue: "venue", details: "details", stay: "stay", faq: "faq", dress: "faq", rsvp: null, closing: null, hero: null, countdown: null };
   const sections = [...document.querySelectorAll("main section[id]")];
-  const linkMap = new Map();
-  navLinks.querySelectorAll("a[href^='#']").forEach((a) => linkMap.set(a.getAttribute("href").slice(1), a));
   if ("IntersectionObserver" in window) {
     const so = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        linkMap.forEach((a) => a.classList.remove("is-active"));
-        const a = linkMap.get(entry.target.id);
-        if (a) a.classList.add("is-active");
+        const target = sectionToLink[entry.target.id];
+        setActiveLink(target === undefined ? entry.target.id : target);
       });
-    }, { rootMargin: "-45% 0px -50% 0px" });
+    }, { rootMargin: "-40% 0px -55% 0px" });
     sections.forEach((s) => so.observe(s));
   }
 })();
