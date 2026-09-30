@@ -179,54 +179,85 @@
     s: document.getElementById("cdSeconds"),
   };
   const note = document.getElementById("countdownNote");
-  const ring = document.getElementById("ringProgress");
-  const ringLabel = document.getElementById("ringLabel");
-  const RING_LEN = 2 * Math.PI * 54;
+  const progressFill = document.getElementById("progressFill");
+  const progressPct = document.getElementById("progressPct");
   const pad = (n) => String(n).padStart(2, "0");
 
+  // Roll the old value up and out while the new one rises in from below.
   function setNum(el, value) {
     if (el.textContent === value) return;
+    if (reduceMotion) { el.textContent = value; return; }
+    const parent = el.parentNode;
+    parent.querySelectorAll(".cd__val--out").forEach((n) => n.remove());
+    const old = el.cloneNode(true);
+    old.removeAttribute("id");
+    old.classList.add("cd__val--out");
+    old.setAttribute("aria-hidden", "true");
+    parent.appendChild(old);
+    old.addEventListener("animationend", () => old.remove(), { once: true });
     el.textContent = value;
-    if (reduceMotion) return;
-    el.classList.remove("is-tick");
-    void el.offsetWidth; // restart animation
-    el.classList.add("is-tick");
+    el.classList.remove("cd__val--in");
+    void el.offsetWidth;
+    el.classList.add("cd__val--in");
   }
 
   function updateCountdown() {
-    const now = new Date();
-    let diff = WEDDING_DATE - now;
+    const diff = WEDDING_DATE - new Date();
     if (diff <= 0) {
-      setNum(els.d, "00"); setNum(els.h, "00"); setNum(els.m, "00"); setNum(els.s, "00");
+      ["d", "h", "m", "s"].forEach((k) => setNum(els[k], "00"));
       note.textContent = "Today is the day. We're getting married!";
-      ring.style.strokeDashoffset = "0";
-      ringLabel.textContent = "100%";
+      progressFill.style.width = "100%";
+      progressPct.textContent = "100%";
       return;
     }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
-    setNum(els.d, pad(days));
-    setNum(els.h, pad(hours));
-    setNum(els.m, pad(minutes));
-    setNum(els.s, pad(seconds));
+    setNum(els.d, pad(Math.floor(diff / 86400000)));
+    setNum(els.h, pad(Math.floor((diff % 86400000) / 3600000)));
+    setNum(els.m, pad(Math.floor((diff % 3600000) / 60000)));
+    setNum(els.s, pad(Math.floor((diff % 60000) / 1000)));
   }
 
   function updateRing() {
     const total = WEDDING_DATE - RING_START;
     const elapsed = Math.min(Math.max(Date.now() - RING_START, 0), total);
     const pct = elapsed / total;
-    ring.style.strokeDashoffset = String(RING_LEN * (1 - pct));
-    ringLabel.textContent = Math.round(pct * 100) + "%";
+    progressFill.style.width = (pct * 100).toFixed(2) + "%";
+    // Count the percentage up alongside the bar.
+    const target = Math.round(pct * 100);
+    const start = performance.now();
+    (function step(now) {
+      const t = Math.min((now - start) / 2000, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      progressPct.textContent = Math.round(target * eased) + "%";
+      if (t < 1) requestAnimationFrame(step);
+    })(start);
   }
 
   const weekday = WEDDING_DATE.toLocaleDateString("en-US", { weekday: "long" });
   const monthDay = WEDDING_DATE.toLocaleDateString("en-US", { month: "long", day: "numeric" });
-  note.textContent = `${weekday}, ${monthDay} · 4:00 in the afternoon`;
+  note.textContent = `${weekday} · ${monthDay} · 4:00 pm`;
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // Add to calendar: build an .ics file on the fly.
+  const calBtn = document.getElementById("addToCalendar");
+  if (calBtn) {
+    const fmt = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    const end = new Date(WEDDING_DATE.getTime() + 8 * 3600000);
+    const ics = [
+      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Alam & Astrid//Wedding//EN",
+      "BEGIN:VEVENT",
+      "UID:alam-astrid-wedding-" + WEDDING_DATE.getFullYear() + "@wedding",
+      "DTSTAMP:" + fmt(new Date()),
+      "DTSTART:" + fmt(WEDDING_DATE),
+      "DTEND:" + fmt(end),
+      "SUMMARY:Alam & Astrid's Wedding",
+      "DESCRIPTION:Ceremony at 4:00 pm followed by drinks\\, dinner and dancing.",
+      "END:VEVENT", "END:VCALENDAR",
+    ].join("\r\n");
+    calBtn.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+    calBtn.setAttribute("download", "alam-and-astrid-wedding.ics");
+  }
 
   /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll(".reveal");

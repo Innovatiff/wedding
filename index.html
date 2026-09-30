@@ -95,6 +95,67 @@
       </a>
     </section>
 
+    <!-- ============ COUNTDOWN ============ -->
+    <section class="countdown section" id="countdown">
+      <div class="countdown__watermark" aria-hidden="true">&amp;</div>
+      <div class="container">
+        <p class="eyebrow reveal">Counting the moments</p>
+        <h2 class="section-title reveal">Until we say <em>I do</em></h2>
+
+        <div class="cd reveal" id="countdownGrid">
+          <div class="cd__orb cd__orb--1" aria-hidden="true"></div>
+          <div class="cd__orb cd__orb--2" aria-hidden="true"></div>
+          <div class="cd__grain" aria-hidden="true"></div>
+
+          <div class="cd__head">
+            <span class="cd__rule"></span>
+            <span class="cd__when" id="countdownNote">June 25 · 4:00 pm</span>
+            <span class="cd__rule"></span>
+          </div>
+
+          <div class="cd__units" role="timer" aria-live="off" aria-label="Time until the wedding">
+            <div class="cd__unit">
+              <div class="cd__num"><span class="cd__val" id="cdDays">00</span></div>
+              <span class="cd__label">Days</span>
+            </div>
+            <span class="cd__sep" aria-hidden="true"><i></i><i></i></span>
+            <div class="cd__unit">
+              <div class="cd__num"><span class="cd__val" id="cdHours">00</span></div>
+              <span class="cd__label">Hours</span>
+            </div>
+            <span class="cd__sep" aria-hidden="true"><i></i><i></i></span>
+            <div class="cd__unit">
+              <div class="cd__num"><span class="cd__val" id="cdMinutes">00</span></div>
+              <span class="cd__label">Minutes</span>
+            </div>
+            <span class="cd__sep" aria-hidden="true"><i></i><i></i></span>
+            <div class="cd__unit">
+              <div class="cd__num"><span class="cd__val" id="cdSeconds">00</span></div>
+              <span class="cd__label">Seconds</span>
+            </div>
+          </div>
+
+          <div class="cd__progress">
+            <div class="cd__progress-meta">
+              <span><strong id="progressPct">0%</strong> of the wait is behind us</span>
+              <span class="cd__progress-end">June 25</span>
+            </div>
+            <div class="cd__bar" aria-hidden="true">
+              <span class="cd__bar-fill" id="progressFill"><i></i></span>
+            </div>
+          </div>
+
+          <div class="cd__actions">
+            <a href="#rsvp" class="btn btn--primary">RSVP</a>
+            <a href="#" class="btn btn--ghost" id="addToCalendar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
+              Add to calendar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ TICKER ============ -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker__track">
@@ -108,43 +169,6 @@
         <span>Forever begins</span><i>✦</i>
       </div>
     </div>
-
-    <!-- ============ COUNTDOWN ============ -->
-    <section class="countdown section" id="countdown">
-      <div class="container">
-        <p class="eyebrow reveal">Counting the moments</p>
-        <h2 class="section-title reveal">Until we say <em>I do</em></h2>
-        <div class="countdown__grid reveal" id="countdownGrid">
-          <div class="countdown__unit">
-            <div class="countdown__flip"><span class="countdown__num" id="cdDays">00</span></div>
-            <span class="countdown__label">Days</span>
-          </div>
-          <div class="countdown__sep">:</div>
-          <div class="countdown__unit">
-            <div class="countdown__flip"><span class="countdown__num" id="cdHours">00</span></div>
-            <span class="countdown__label">Hours</span>
-          </div>
-          <div class="countdown__sep">:</div>
-          <div class="countdown__unit">
-            <div class="countdown__flip"><span class="countdown__num" id="cdMinutes">00</span></div>
-            <span class="countdown__label">Minutes</span>
-          </div>
-          <div class="countdown__sep">:</div>
-          <div class="countdown__unit">
-            <div class="countdown__flip"><span class="countdown__num" id="cdSeconds">00</span></div>
-            <span class="countdown__label">Seconds</span>
-          </div>
-        </div>
-        <p class="countdown__note reveal" id="countdownNote">Thursday, June 25 · 4:00 in the afternoon</p>
-        <div class="countdown__ring reveal" aria-hidden="true">
-          <svg viewBox="0 0 120 120">
-            <circle class="ring__bg" cx="60" cy="60" r="54" />
-            <circle class="ring__fg" id="ringProgress" cx="60" cy="60" r="54" />
-          </svg>
-          <span class="countdown__ring-label" id="ringLabel">0%</span>
-        </div>
-      </div>
-    </section>
 
     <!-- ============ INTRO ============ -->
     <section class="intro section" id="intro">
